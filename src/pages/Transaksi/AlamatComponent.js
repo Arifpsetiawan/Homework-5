@@ -158,7 +158,7 @@ const DataAlamat = [
   },
 ];
 
-const AlamatComponent = () => {
+const AlamatComponent = (props) => {
   const [selectedProvinsi, setSelectedProvinsi] = React.useState(null);
   const [selectedKabupaten, setSelectedKabupaten] = React.useState(null);
   const [selectedKecamatan, setSelectedKecamatan] = React.useState(null);
@@ -242,7 +242,7 @@ const AlamatComponent = () => {
           </Col>
         </Row>
         <Row>
-          <Input.TextArea />
+          <Input.TextArea value={props.value} onChange={props.onChangeAlamat} />
         </Row>
       </Form.Item>
     </Form>

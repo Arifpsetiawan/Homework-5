@@ -1,6 +1,9 @@
+import React from "react";
 import { Row, Col, Form, Button, Select, InputNumber } from "antd";
 import AlamatComponent from "./AlamatComponent";
+import useCreateTransaction from "../../Mutations/useCreateTransaction";
 import NavbarComponent from "../../assets/components/navbar/NavbarComponent";
+import { useHistory } from "react-router-dom";
 import "./TransaksiPage.css";
 const { Option } = Select;
 
@@ -116,6 +119,20 @@ const JenisTransaksi = [
 ];
 
 const TransaksiPage = () => {
+  const history = useHistory();
+  const [formState, setFormState] = React.useState({
+    created_date: new Date().toString(),
+    jenis_transaksi: "",
+    nominal_transaksi: "1000000",
+    address: "Jalan depok bahagia no 50",
+    status: "Menunggu Konfirmasi Agen",
+  });
+
+  const { mutate } = useCreateTransaction(formState, (result) => {
+    console.log("success mutation >> ", result);
+    history.replace("/home");
+  });
+
   const currencyParser = (val) => {
     try {
       // for when the input gets clears
@@ -170,11 +187,15 @@ const TransaksiPage = () => {
                     <Select
                       placeholder="Pilih Jenis Transaksi"
                       onChange={(value) => {
-                        console.log("value >> ", value);
+                        setFormState({ ...formState, jenis_transaksi: value });
                       }}
                     >
                       {JenisTransaksi.map((option) => (
-                        <Option key={option.key} value={option.value} disabled={option.isDisabled}>
+                        <Option
+                          key={option.key}
+                          value={option.value}
+                          disabled={option.isDisabled}
+                        >
                           {option.label}
                         </Option>
                       ))}
@@ -194,11 +215,33 @@ const TransaksiPage = () => {
                   ]}
                 >
                   <Col>
-                    <InputNumber style={{ width: "100%" }} formatter={(value) => new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", minimumFractionDigits: 0 }).format(value)} parser={currencyParser} />
+                    <InputNumber
+                      style={{ width: "100%" }}
+                      formatter={(value) =>
+                        new Intl.NumberFormat("id-ID", {
+                          style: "currency",
+                          currency: "IDR",
+                          minimumFractionDigits: 0,
+                        }).format(value)
+                      }
+                      parser={currencyParser}
+                      onChange={(value) => {
+                        console.log("value >> ", value);
+                        setFormState({
+                          ...formState,
+                          nominal_transaksi: value,
+                        });
+                      }}
+                    />
                   </Col>
                 </Form.Item>
 
-                <AlamatComponent />
+                <AlamatComponent
+                  value={formState.address}
+                  onChangeAlamat={(event) => {
+                    setFormState({ ...formState, address: event.target.value });
+                  }}
+                />
               </Form>
             </Col>
           </Row>
@@ -210,6 +253,7 @@ const TransaksiPage = () => {
                 paddingRight: "15px",
                 marginTop: "50px",
               }}
+              onClick={mutate}
             >
               Cari Agen
             </Button>
