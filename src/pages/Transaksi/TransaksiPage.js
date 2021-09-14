@@ -123,9 +123,9 @@ const TransaksiPage = () => {
   const [formState, setFormState] = React.useState({
     created_date: new Date().toString(),
     jenis_transaksi: "",
-    nominal_transaksi: "1000000",
-    address: "Jalan depok bahagia no 50",
-    status: "Menunggu Konfirmasi Agen",
+    nominal_transaksi: "",
+    address: "",
+    status: "0",
   });
 
   const { mutate } = useCreateTransaction(formState, (result) => {
@@ -191,11 +191,7 @@ const TransaksiPage = () => {
                       }}
                     >
                       {JenisTransaksi.map((option) => (
-                        <Option
-                          key={option.key}
-                          value={option.value}
-                          disabled={option.isDisabled}
-                        >
+                        <Option key={option.key} value={option.value} disabled={option.isDisabled}>
                           {option.label}
                         </Option>
                       ))}
