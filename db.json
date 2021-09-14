@@ -1,0 +1,36 @@
+{
+  "transactions": [
+    {
+      "id": "12312",
+      "created_date": "12-10-2021",
+      "jenis_transaksi": "Setoran Pinjaman",
+      "nominal_transaksi": "1000000",
+      "address": "Jalan depok bahagia no 50",
+      "status": "Menunggu Konfirmasi Agen"
+    },
+    {
+      "created_date": "Tue Sep 14 2021 14:16:40 GMT+0900 (Eastern Indonesia Time)",
+      "jenis_transaksi": "setoran-uang",
+      "nominal_transaksi": 0,
+      "address": "Jalan depok bahagia no 50",
+      "status": "Menunggu Konfirmasi Agen",
+      "id": "PemLbEB"
+    },
+    {
+      "created_date": "Tue Sep 14 2021 14:48:54 GMT+0900 (Eastern Indonesia Time)",
+      "jenis_transaksi": "setoran-uang",
+      "nominal_transaksi": 555555,
+      "address": "vfdddsd",
+      "status": "Menunggu Konfirmasi Agen",
+      "id": "HAGkgWb"
+    },
+    {
+      "created_date": "Tue Sep 14 2021 15:31:14 GMT+0900 (Eastern Indonesia Time)",
+      "jenis_transaksi": "report",
+      "nominal_transaksi": 1111111,
+      "address": "vhhjjjn",
+      "status": "Menunggu Konfirmasi Agen",
+      "id": "8oWIG0H"
+    }
+  ]
+}
