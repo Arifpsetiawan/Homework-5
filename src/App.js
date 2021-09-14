@@ -18,7 +18,13 @@ import RestrictedWrapper from "./RestrictedWrapper";
 import { AuthorizedContextProvider } from "./AuthorizedContext";
 
 // Create a client
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   return (
