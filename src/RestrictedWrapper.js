@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useAuthorizedContext } from "./AuthorizedContext";
 
 const RestrictedWrapper = (props) => {

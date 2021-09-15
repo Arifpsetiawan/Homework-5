@@ -1,11 +1,4 @@
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from "react-query";
-import logo from "./logo.svg";
+import { QueryClient, QueryClientProvider } from "react-query";
 import "./App.css";
 import TransaksiPage from "./pages/Transaksi/TransaksiPage";
 import Login from "./pages/login/Login";
@@ -37,17 +30,9 @@ function App() {
                 <Login />
               </RestrictedWrapper>
             </Route>
-            <AuthorizedRoute
-              path="/Transaksi"
-              exact
-              component={TransaksiPage}
-            ></AuthorizedRoute>
+            <AuthorizedRoute path="/Transaksi" exact component={TransaksiPage}></AuthorizedRoute>
             <Route path="/Signout" exact component={Logout} />
-            <AuthorizedRoute
-              path="/Home"
-              exact
-              component={Home}
-            ></AuthorizedRoute>
+            <AuthorizedRoute path="/Home" exact component={Home}></AuthorizedRoute>
           </Switch>
         </Router>
       </AuthorizedContextProvider>
