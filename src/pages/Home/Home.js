@@ -59,7 +59,18 @@ const CardTransactionComponent = (props) => {
           <Text>Status</Text>
         </Col>
         <Col span={13}>
-          <Text>: {props.transaction.status}</Text>
+          <Text>
+            :{" "}
+            {props.transaction.status === "0"
+              ? "Menunggu konfirmasi agen"
+              : props.transaction.status === "1"
+              ? "Agen dalam perjalanan"
+              : props.transaction.status === "2"
+              ? "Dibatalkan agen"
+              : props.transaction.status === "3"
+              ? "Selesai"
+              : "Error"}
+          </Text>
         </Col>
       </Row>
 
@@ -72,6 +83,7 @@ const CardTransactionComponent = (props) => {
               marginTop: "2rem",
               backgroundColor: "#F03D3E",
               fontWeight: "bold",
+              borderRadius: "10px",
             }}
             onClick={handleCancelTransaction}
           >

@@ -1,13 +1,12 @@
 import { useMutation } from "react-query";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
 
 const useLogin = (loginData, onSuccess, onError) => {
- 
   const { mutate, data, isLoading, isError } = useMutation(
     async () => {
-      const response = await fetch(`http://localhost:5000/login`, {
+      const response = await fetch(`http://localhost:5000/users`, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
           "Content-Type": "application/json",
@@ -19,9 +18,9 @@ const useLogin = (loginData, onSuccess, onError) => {
         throw new Error("Network response was not ok");
       }
       const result = await response.json();
-      
-      cookies.set('accessToken', result.accessToken, { path: '/' });
-     
+
+      cookies.set("accessToken", result.accessToken, { path: "/" });
+
       return response.json();
     },
     { onError, onSuccess }

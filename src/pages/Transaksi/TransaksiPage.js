@@ -22,7 +22,7 @@ const TransaksiPage = () => {
     kecamatan_customer: " ",
     alamat_lengkap: " ",
     nominal_transaksi: "",
-    status: "Menunggu Konfirmasi Agen",
+    status: "0",
   });
 
   const { mutate } = useCreateTransaction(formState, (result) => {

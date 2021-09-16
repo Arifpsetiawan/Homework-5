@@ -35,4 +35,12 @@ button.btn-login {
   background-color: #292961;
   color: #fff;
   border-radius: 10px;
+  margin-left: 190px;
+}
+
+button.btn-register {
+  background-color: #fafcff;
+  color: #000;
+  border-radius: 10px;
+  margin-left: 180px;
 }

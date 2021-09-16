@@ -1,10 +1,11 @@
 import React, { useState, useCallback } from "react";
-import { Form, Input, Button, Select, Col } from "antd";
+import { Form, Input, Button, Select, Col, Result } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import "./login.css";
 import { useHistory } from "react-router-dom";
 import BRI from "../../assets/image/BRI2.png";
 import { useAuthorizedContext } from "../../AuthorizedContext";
+import useLogin from "../../Mutations/useLogin";
 
 const { Option } = Select;
 
@@ -16,14 +17,16 @@ const Login = () => {
   const [selectedUserLevel, setSelectedUserLevel] = useState("customer");
   const { setAuthorizedValue } = useAuthorizedContext();
 
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
-  };
-
-  const handleSubmit = useCallback(() => {
+  const handleSuccessLogin = useCallback(() => {
     setAuthorizedValue(true, selectedUserLevel);
     history.push("/Home");
   }, [setAuthorizedValue, history, selectedUserLevel]);
+
+  const { mutate: login } = useLogin({ email: username, password }, handleSuccessLogin, (error) => console.log("error >>", error));
+
+  const onFinish = (values) => {
+    console.log("Received values of form: ", values);
+  };
 
   const handleSelectedUserLevel = useCallback((value) => {
     setSelectedUserLevel(`${value}`);
@@ -63,6 +66,15 @@ const Login = () => {
 
   console.log("Ini data", data);
   console.log("INI ROLE", selectedUserLevel);
+
+  // const onFinish = (values) => {
+  //   console.log("Received values of form: ", values);
+  // };
+
+  // const handleSubmit = useCallback(() => {
+  //   setAuthorizedValue(true, selectedUserLevel);
+  //   history.push("/Home");
+  // }, [setAuthorizedValue, history, selectedUserLevel]);
 
   return (
     <div className="outer-login">
@@ -136,8 +148,12 @@ const Login = () => {
                 justifyContent: "center",
               }}
             >
-              <Button className="btn-login" onClick={handleSubmit}>
+              <Button className="btn-login" onClick={login}>
                 Login
+              </Button>
+
+              <Button className="btn-register" onClick={handleSuccessLogin}>
+                Register
               </Button>
             </Col>
           </Form.Item>
