@@ -1,7 +1,7 @@
 import { useMutation } from "react-query";
 import Cookies from "universal-cookie";
 
-const cookies = new Cookies();
+// const cookies = new Cookies();
 
 const useDeleteTransaction = (deleteId, onSuccess, onError) => {
   const { mutate, data, isLoading, isError } = useMutation(
@@ -10,7 +10,7 @@ const useDeleteTransaction = (deleteId, onSuccess, onError) => {
         method: "DELETE", // *GET, POST, PUT, DELETE, etc.
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer " + cookies.get("accessToken"),
+          // "Authorization": "Bearer " + cookies.get("accessToken"),
         },
       });
       if (!response.ok) {
