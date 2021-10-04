@@ -1,21 +1,25 @@
-import React, { useCallback } from "react";
-import { Row, Col, Button, Card, Typography, Spin, Space } from "antd";
-import "./Home.css";
-import NavbarComponent from "../../assets/components/navbar/NavbarComponent";
-import { useAuthorizedContext } from "../../AuthorizedContext";
-import useGetTransaction from "../../Query/useGetTransaction";
-import useDeleteTransaction from "../../Mutations/useDeleteTransaction";
-import moment from "moment";
+import React, { useCallback } from "react"
+import { Row, Col, Button, Card, Typography, Spin, Space } from "antd"
+import moment from "moment"
 
-const { Title, Text } = Typography;
+import "./Home.css"
+import { useAuthorizedContext } from "../../AuthorizedContext"
+import NavbarComponent from "../../components/navbar/NavbarComponent"
+import useGetTransaction from "../../Query/useGetTransaction"
+import useDeleteTransaction from "../../Mutations/useDeleteTransaction"
+
+const { Title, Text } = Typography
 
 const CardTransactionComponent = (props) => {
-  const { mutate: deleteTransaction } = useDeleteTransaction(props.transaction.id, props.refetchTransactions);
+  const { mutate: deleteTransaction } = useDeleteTransaction(
+    props.transaction.id,
+    props.refetchTransactions
+  )
 
   const handleCancelTransaction = useCallback(() => {
     // console.log("id transaction >> ", props.transaction.id);
-    deleteTransaction();
-  }, [deleteTransaction]);
+    deleteTransaction()
+  }, [deleteTransaction])
 
   return (
     <Card title=" " style={{ width: "80vh" }}>
@@ -24,7 +28,12 @@ const CardTransactionComponent = (props) => {
           <Text>Waktu Request </Text>
         </Col>
         <Col span={13}>
-          <Text>: {moment(new Date(props.transaction.created_date)).format("DD MMMM YYYY, hh:mm A")}</Text>
+          <Text>
+            :{" "}
+            {moment(new Date(props.transaction.created_date)).format(
+              "DD MMMM YYYY, hh:mm A"
+            )}
+          </Text>
         </Col>
       </Row>
       <Row>
@@ -92,14 +101,19 @@ const CardTransactionComponent = (props) => {
         </Col>
       </Row>
     </Card>
-  );
-};
+  )
+}
 
 function Home() {
-  const { isLoggedIn, userLevel } = useAuthorizedContext();
-  console.log("value >> ", isLoggedIn, userLevel);
-  const { data, isError, isLoading, refetch: refetchTransactions } = useGetTransaction();
-  console.log("data >> ", isLoading, data);
+  const { isLoggedIn, userLevel } = useAuthorizedContext()
+  console.log("value >> ", isLoggedIn, userLevel)
+  const {
+    data,
+    isError,
+    isLoading,
+    refetch: refetchTransactions,
+  } = useGetTransaction()
+  console.log("data >> ", isLoading, data)
   return (
     <div className="outer-home">
       <NavbarComponent />
@@ -112,7 +126,13 @@ function Home() {
             {isLoading ? (
               <Spin tip="Loading..."></Spin>
             ) : data ? (
-              data.map((transaction) => <CardTransactionComponent key={transaction.id} transaction={transaction} refetchTransactions={refetchTransactions} />)
+              data.map((transaction) => (
+                <CardTransactionComponent
+                  key={transaction.id}
+                  transaction={transaction}
+                  refetchTransactions={refetchTransactions}
+                />
+              ))
             ) : (
               <Text>Gagal Memuat Data</Text>
             )}
@@ -120,7 +140,7 @@ function Home() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

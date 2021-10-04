@@ -1,18 +1,19 @@
-import React from "react";
-import { Route, useHistory } from "react-router-dom";
-import { useAuthorizedContext } from "./AuthorizedContext";
+import React from "react"
+import { Route, useHistory } from "react-router-dom"
+
+import { useAuthorizedContext } from "./AuthorizedContext"
 
 const AuthorizedRoute = (props) => {
-  const { isLoggedIn } = useAuthorizedContext();
-  const history = useHistory();
+  const { isLoggedIn } = useAuthorizedContext()
+  const history = useHistory()
 
   React.useEffect(() => {
     if (!isLoggedIn) {
-      history.push("/");
+      history.push("/")
     }
-  }, [isLoggedIn, history]);
+  }, [isLoggedIn, history])
 
-  return <Route {...props} />;
-};
+  return <Route {...props} />
+}
 
-export default AuthorizedRoute;
+export default AuthorizedRoute

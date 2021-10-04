@@ -10,6 +10,18 @@
       "email": "grarizki",
       "password": "123456",
       "id": 2
+    },
+    {
+      "email": "tuti.wulandari",
+      "password": "2771105",
+      "selectedUserLevel": "customer",
+      "id": 3
+    },
+    {
+      "email": "tuti.wulandari",
+      "password": "hello123",
+      "login_as": 1,
+      "id": 4
     }
   ],
   "transactions": [

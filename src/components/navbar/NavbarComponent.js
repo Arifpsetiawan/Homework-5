@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import * as FaIcons from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { SidebarData } from "../sidebar/SidebarData";
-import "../navbar/navbar.css";
-import { IconContext } from "react-icons";
-import Logo from "../../image/BRI-AJ-v2.png";
+import React, { useState } from "react"
+import { IconContext } from "react-icons"
+import * as FaIcons from "react-icons/fa"
+import { Link } from "react-router-dom"
+
+import "../navbar/navbar.css"
+import Logo from "../../assets/image/BRI-AJ-v2.png"
+import { SidebarData } from "../sidebar/SidebarData"
 
 function NavbarComponent() {
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(false)
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const showSidebar = () => setSidebar(!sidebar)
 
   return (
     <>
@@ -33,13 +34,13 @@ function NavbarComponent() {
                     <span style={{ marginLeft: "16px" }}>{item.title}</span>
                   </Link>
                 </li>
-              );
+              )
             })}
           </ul>
         </nav>
       </IconContext.Provider>
     </>
-  );
+  )
 }
 
-export default NavbarComponent;
+export default NavbarComponent
