@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useMemo } from "react"
 import { useHistory } from "react-router-dom"
 import {
   Row,
@@ -22,11 +22,11 @@ const { Option } = Select
 const { Text } = Typography
 
 const TransaksiPage = () => {
-  const [selectedProvinsi, setSelectedProvinsi] = React.useState(null)
-  const [selectedKabupaten, setSelectedKabupaten] = React.useState(null)
-  const [selectedKecamatan, setSelectedKecamatan] = React.useState(null)
+  const [selectedProvinsi, setSelectedProvinsi] = useState(null)
+  const [selectedKabupaten, setSelectedKabupaten] = useState(null)
+  const [selectedKecamatan, setSelectedKecamatan] = useState(null)
   const history = useHistory()
-  const [formState, setFormState] = React.useState({
+  const [formState, setFormState] = useState({
     created_date: new Date().toString(),
     jenis_transaksi: "",
     provinsi_customer: " ",
@@ -97,14 +97,14 @@ const TransaksiPage = () => {
     setFormState({ ...formState, kecamatan_customer: value })
   }
 
-  const dataKabupaten = React.useMemo(() => {
+  const dataKabupaten = useMemo(() => {
     return (
       DataAlamat?.find((provinsi) => provinsi.name === selectedProvinsi)
         ?.kabupaten || []
     )
   }, [selectedProvinsi])
 
-  const dataKecamatan = React.useMemo(() => {
+  const dataKecamatan = useMemo(() => {
     return (
       dataKabupaten?.find((kabupaten) => kabupaten.name === selectedKabupaten)
         ?.kecamatan || []
