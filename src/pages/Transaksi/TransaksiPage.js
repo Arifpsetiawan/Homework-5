@@ -9,7 +9,9 @@ import {
   InputNumber,
   Input,
   Spin,
+  Table,
   Typography,
+  Space,
 } from "antd"
 
 import "./TransaksiPage.css"
@@ -25,6 +27,7 @@ const TransaksiPage = () => {
   const [selectedProvinsi, setSelectedProvinsi] = useState(null)
   const [selectedKabupaten, setSelectedKabupaten] = useState(null)
   const [selectedKecamatan, setSelectedKecamatan] = useState(null)
+  const [showTableAgen, setShowTableAgen] = useState(false)
   const history = useHistory()
   const [formState, setFormState] = useState({
     created_date: new Date().toString(),
@@ -110,6 +113,65 @@ const TransaksiPage = () => {
         ?.kecamatan || []
     )
   }, [selectedKabupaten, dataKabupaten])
+
+  const getTableAgen = () => setShowTableAgen(true)
+
+  const columnsAgen = [
+    {
+      title: "Nama Agen",
+      dataIndex: "agent_name",
+      key: "agent_name",
+    },
+    {
+      title: "Nomer Whatsapp",
+      dataIndex: "no_hp",
+      key: "no_hp",
+      render: (text) => (
+        <Button type="link" href={"https://wa.me/62" + text}>
+          {text}
+        </Button>
+      ),
+    },
+    {
+      title: "Alamat Agen",
+      dataIndex: "agent_address",
+      key: "agent_address",
+    },
+    {
+      title: "Action",
+      dataIndex: "action",
+      key: "action",
+      render: (text) => (
+        <Button type="link" onClick={mutate}>
+          {text}
+        </Button>
+      ),
+    },
+  ]
+
+  const dataAgen = [
+    {
+      key: "1",
+      agent_name: "Bambang",
+      no_hp: "089525315860",
+      agent_address: "Jl. Raya Soreang No. 300 ",
+      action: "Pilih Agen",
+    },
+    {
+      key: "2",
+      agent_name: "Gayus",
+      no_hp: "089525315890",
+      agent_address: "Jl. Cipetir No. 10",
+      action: "Pilih Agen",
+    },
+    {
+      key: "3",
+      agent_name: "Udin",
+      no_hp: "089525315800",
+      agent_address: "Jl. Cangkuang No. 30",
+      action: "Pilih Agen",
+    },
+  ]
 
   return (
     <div>
@@ -259,44 +321,45 @@ const TransaksiPage = () => {
             </Col>
           </Row>
           <Row justify="center">
-            {isLoading ? (
-              <Spin />
-            ) : isError ? (
-              <div>
-                <Row>
-                  <Text style={{ color: "red" }}> Gagal Memuat data</Text>
-                </Row>
-                <Row justify="space-around" align="middle">
-                  <Button
-                    type="primary"
-                    className="searching-agent"
-                    style={{
-                      paddingRight: "15px",
-                      marginTop: "50px",
-                      backgroundColor: "#ff9800",
-                      color: "white",
-                    }}
-                    onClick={mutate}
-                  >
-                    Coba Lagi
-                  </Button>
-                </Row>
-              </div>
-            ) : (
-              <Button
-                type="primary"
-                className="searching-agent"
-                style={{
-                  paddingRight: "15px",
-                  marginTop: "50px",
-                }}
-                onClick={mutate}
-              >
-                Cari Agen
-              </Button>
-            )}
+            <Button
+              type="primary"
+              className="searching-agent"
+              style={{
+                marginTop: "50px",
+              }}
+              onClick={getTableAgen}
+            >
+              Cari Agen
+            </Button>
           </Row>
         </div>
+
+        <Row justify="center">
+          {isLoading ? (
+            <Spin />
+          ) : isError ? (
+            <div>
+              <Row justify="space-around" align="middle">
+                <Text style={{ color: "red" }}> Gagal memilih Agen</Text>
+              </Row>
+            </div>
+          ) : (
+            showTableAgen && (
+              <div style={{ width: "90%" }}>
+                <Row justify="center">
+                  <Table
+                    style={{
+                      margin: "50px 0",
+                    }}
+                    columns={columnsAgen}
+                    dataSource={dataAgen}
+                    pagination={false}
+                  />
+                </Row>
+              </div>
+            )
+          )}
+        </Row>
       </div>
     </div>
   )

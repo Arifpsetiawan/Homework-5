@@ -125,7 +125,9 @@ function Home() {
           <Space direction="vertical">
             {isLoading ? (
               <Spin tip="Loading..."></Spin>
-            ) : data ? (
+            ) : isError ? (
+              <Text>Gagal Memuat Data</Text>
+            ) : (
               data.map((transaction) => (
                 <CardTransactionComponent
                   key={transaction.id}
@@ -133,8 +135,6 @@ function Home() {
                   refetchTransactions={refetchTransactions}
                 />
               ))
-            ) : (
-              <Text>Gagal Memuat Data</Text>
             )}
           </Space>
         </div>
