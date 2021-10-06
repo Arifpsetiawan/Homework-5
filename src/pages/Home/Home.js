@@ -126,7 +126,7 @@ function Home() {
             {isLoading ? (
               <Spin tip="Loading..."></Spin>
             ) : isError ? (
-              <Text>Gagal Memuat Data</Text>
+              <Text style={{ color: "red" }}>Gagal Memuat Data</Text>
             ) : (
               data.map((transaction) => (
                 <CardTransactionComponent

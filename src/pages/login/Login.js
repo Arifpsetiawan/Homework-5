@@ -20,7 +20,7 @@ const Login = () => {
 
   const handleSuccessLogin = useCallback(() => {
     setAuthorizedValue(true, selectedUserLevel)
-    history.push("/Home")
+    history.push("/home")
   }, [setAuthorizedValue, history, selectedUserLevel])
 
   const { mutate: login } = useLogin(

@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { IconContext } from "react-icons"
 import * as FaIcons from "react-icons/fa"
-import { Link } from "react-router-dom"
 
 import "../navbar/navbar.css"
 import Logo from "../../assets/image/BRI-AJ-v2.png"

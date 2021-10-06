@@ -14,11 +14,12 @@ import {
   Space,
 } from "antd"
 
-import "./TransaksiPage.css"
-import NavbarComponent from "../../components/navbar/NavbarComponent"
-import useCreateTransaction from "../../Mutations/useCreateTransaction"
+import DataAgent from "./DataAgent"
 import DataAlamat from "./DataAlamat"
 import JenisTransaksi from "./DataJenisTransaksi"
+import useCreateTransaction from "../../Mutations/useCreateTransaction"
+import NavbarComponent from "../../components/navbar/NavbarComponent"
+import "./TransaksiPage.css"
 
 const { Option } = Select
 const { Text } = Typography
@@ -116,7 +117,7 @@ const TransaksiPage = () => {
 
   const getTableAgen = () => setShowTableAgen(true)
 
-  const columnsAgen = [
+  const ColumnsAgen = [
     {
       title: "Nama Agen",
       dataIndex: "agent_name",
@@ -146,30 +147,6 @@ const TransaksiPage = () => {
           {text}
         </Button>
       ),
-    },
-  ]
-
-  const dataAgen = [
-    {
-      key: "1",
-      agent_name: "Bambang",
-      no_hp: "089525315860",
-      agent_address: "Jl. Raya Soreang No. 300 ",
-      action: "Pilih Agen",
-    },
-    {
-      key: "2",
-      agent_name: "Gayus",
-      no_hp: "089525315890",
-      agent_address: "Jl. Cipetir No. 10",
-      action: "Pilih Agen",
-    },
-    {
-      key: "3",
-      agent_name: "Udin",
-      no_hp: "089525315800",
-      agent_address: "Jl. Cangkuang No. 30",
-      action: "Pilih Agen",
     },
   ]
 
@@ -324,9 +301,7 @@ const TransaksiPage = () => {
             <Button
               type="primary"
               className="searching-agent"
-              style={{
-                marginTop: "50px",
-              }}
+              style={{ marginTop: "50px" }}
               onClick={getTableAgen}
             >
               Cari Agen
@@ -334,32 +309,30 @@ const TransaksiPage = () => {
           </Row>
         </div>
 
-        <Row justify="center">
-          {isLoading ? (
-            <Spin />
-          ) : isError ? (
-            <div>
-              <Row justify="space-around" align="middle">
+        <div style={{ margin: "50px 0" }}>
+          <Row justify="center">
+            {isLoading ? (
+              <Spin />
+            ) : isError ? (
+              <Space align="center" direction="vertical" size="large">
                 <Text style={{ color: "red" }}> Gagal memilih Agen</Text>
-              </Row>
-            </div>
-          ) : (
-            showTableAgen && (
-              <div style={{ width: "90%" }}>
-                <Row justify="center">
-                  <Table
-                    style={{
-                      margin: "50px 0",
-                    }}
-                    columns={columnsAgen}
-                    dataSource={dataAgen}
-                    pagination={false}
-                  />
-                </Row>
-              </div>
-            )
-          )}
-        </Row>
+                <Table
+                  columns={ColumnsAgen}
+                  dataSource={DataAgent}
+                  pagination={false}
+                />
+              </Space>
+            ) : (
+              showTableAgen && (
+                <Table
+                  columns={ColumnsAgen}
+                  dataSource={DataAgent}
+                  pagination={false}
+                />
+              )
+            )}
+          </Row>
+        </div>
       </div>
     </div>
   )

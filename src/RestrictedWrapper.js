@@ -22,7 +22,7 @@ const RestrictedWrapper = (props) => {
     if (accessToken) {
       setAuthorizedValue(true)
     }
-  }, [accessToken, isLoggedIn])
+  }, [accessToken, setAuthorizedValue])
 
   return isLoggedIn ? null : props.children
 }
