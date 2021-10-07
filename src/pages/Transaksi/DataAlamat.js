@@ -4,7 +4,13 @@ const DataAlamat = [
     kabupaten: [
       {
         name: "Kota Bandung",
-        kecamatan: ["Coblong", "Lengkong Gudang", "Buahbatu", "Ujung Berung", "Antapani"],
+        kecamatan: [
+          "Coblong",
+          "Lengkong Gudang",
+          "Buahbatu",
+          "Ujung Berung",
+          "Antapani",
+        ],
       },
       {
         name: "Bogor",
@@ -21,7 +27,14 @@ const DataAlamat = [
     kabupaten: [
       {
         name: "Grobogan",
-        kecamatan: ["Brati", "Gabus", "Geyer", "Karangrayu", "Kradenan", "Purwodadi"],
+        kecamatan: [
+          "Brati",
+          "Gabus",
+          "Geyer",
+          "Karangrayu",
+          "Kradenan",
+          "Purwodadi",
+        ],
       },
       {
         name: "Kudus",
@@ -33,7 +46,14 @@ const DataAlamat = [
       },
       {
         name: "Semarang",
-        kecamatan: ["Ambarawa", "Bancak", "Bawen", "Banyubiru", "Bringin", "Getasan"],
+        kecamatan: [
+          "Ambarawa",
+          "Bancak",
+          "Bawen",
+          "Banyubiru",
+          "Bringin",
+          "Getasan",
+        ],
       },
     ],
   },
@@ -52,7 +72,14 @@ const DataAlamat = [
       { name: "Kota Kediri", kecamatan: ["Kediri", "Mojoroto", "Pesantren"] },
       {
         name: "Banyuwangi",
-        kecamatan: ["Pesanggaran", "Purwoharjo", "Muncar", "Genteng", "Glenmore", "Rogojampi"],
+        kecamatan: [
+          "Pesanggaran",
+          "Purwoharjo",
+          "Muncar",
+          "Genteng",
+          "Glenmore",
+          "Rogojampi",
+        ],
       },
     ],
   },
@@ -65,7 +92,12 @@ const DataAlamat = [
       },
       {
         name: "Kota Denpasar",
-        kecamatan: ["Denpasar Barat", "Denpasar Selatan", "Denpasar Timur", "Denpasar Utara"],
+        kecamatan: [
+          "Denpasar Barat",
+          "Denpasar Selatan",
+          "Denpasar Timur",
+          "Denpasar Utara",
+        ],
       },
       {
         name: "Gianyar",
@@ -77,7 +109,13 @@ const DataAlamat = [
       },
       {
         name: "Tabanan",
-        kecamatan: ["Baturiti", "Kerambitan", "Selemadeng Barat", "Selemadeng Timur", "Tabanan"],
+        kecamatan: [
+          "Baturiti",
+          "Kerambitan",
+          "Selemadeng Barat",
+          "Selemadeng Timur",
+          "Tabanan",
+        ],
       },
     ],
   },
@@ -90,7 +128,12 @@ const DataAlamat = [
       },
       {
         name: "Kota Tual",
-        kecamatan: ["Pulau Dullah Utara", "Pulau Dullah Selatan", "Tayando Tam", "Pulau-Pulau Kur"],
+        kecamatan: [
+          "Pulau Dullah Utara",
+          "Pulau Dullah Selatan",
+          "Tayando Tam",
+          "Pulau-Pulau Kur",
+        ],
       },
       {
         name: "Buru",
@@ -102,6 +145,6 @@ const DataAlamat = [
       },
     ],
   },
-];
+]
 
-export default DataAlamat;
+export default DataAlamat

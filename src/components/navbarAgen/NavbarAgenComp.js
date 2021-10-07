@@ -1,13 +1,14 @@
 import React, { useState } from "react"
-import { Link } from "react-router-dom"
 import { IconContext } from "react-icons"
 import * as FaIcons from "react-icons/fa"
+import * as AiIcons from "react-icons/ai"
+import { Link } from "react-router-dom"
 
-import { SidebarData } from "../sidebar/SidebarData"
-import "../navbar/navbar.css"
+import { SidebarDataAgen } from "../sidebarAgen/sidebarDataAgen"
+import "./navbar.sass"
 import Logo from "../../assets/image/BRI-AJ-v2.png"
 
-function NavbarComponent() {
+function NavbarAgenComp() {
   const [sidebar, setSidebar] = useState(false)
 
   const showSidebar = () => setSidebar(!sidebar)
@@ -26,7 +27,7 @@ function NavbarComponent() {
               <img src={Logo} alt="Logo" />
               <Link to="#" className="menu-bars"></Link>
             </li>
-            {SidebarData.map((item, index) => {
+            {SidebarDataAgen.map((item, index) => {
               return (
                 <li key={index} className={item.cName}>
                   <Link to={item.path}>
@@ -43,4 +44,4 @@ function NavbarComponent() {
   )
 }
 
-export default NavbarComponent
+export default NavbarAgenComp

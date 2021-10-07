@@ -1,10 +1,10 @@
 import React, { useCallback } from "react"
-import { Row, Col, Button, Card, Typography, Spin, Space } from "antd"
+import { Row, Col, Button, Card, Typography, Spin, Space, Alert } from "antd"
 import moment from "moment"
 
 import "./Home.css"
-import { useAuthorizedContext } from "../../AuthorizedContext"
 import NavbarComponent from "../../components/navbar/NavbarComponent"
+import { useAuthorizedContext } from "../../AuthorizedContext"
 import useGetTransaction from "../../Query/useGetTransaction"
 import useDeleteTransaction from "../../Mutations/useDeleteTransaction"
 
@@ -126,7 +126,7 @@ function Home() {
             {isLoading ? (
               <Spin tip="Loading..."></Spin>
             ) : isError ? (
-              <Text style={{ color: "red" }}>Gagal Memuat Data</Text>
+              <Alert message="Gagal Memuat Data" type="error" />
             ) : (
               data.map((transaction) => (
                 <CardTransactionComponent

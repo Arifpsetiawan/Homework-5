@@ -1,15 +1,22 @@
-import React from "react"
+import React, { useState, useCallback } from "react"
 import { Form, Input, Button, Col, Typography } from "antd"
+import { useHistory } from "react-router-dom"
 
 import "./Register.css"
 
 const { Title } = Typography
 
 const RegisterCustomer = () => {
+  const history = useHistory()
+
+  const handleRegisterCustomerBtn = useCallback(() => {
+    history.push("/")
+  }, [])
+
   return (
     <div className="outer-login">
       <div className="inner-login">
-        <div className="logo" style={{ marginTop: '0', marginBottom: "45px" }}>
+        <div className="logo" style={{ marginTop: "0", marginBottom: "45px" }}>
           <Title style={{ textAlign: "center" }}>Sign Up</Title>
         </div>
         <Form
@@ -80,7 +87,12 @@ const RegisterCustomer = () => {
                 justifyContent: "center",
               }}
             >
-              <Button className="btn-registerAgenCustomer">Register Customer</Button>
+              <Button
+                className="btn-registerAgenCustomer"
+                onClick={handleRegisterCustomerBtn}
+              >
+                Register Customer
+              </Button>
             </Col>
           </Form.Item>
         </Form>

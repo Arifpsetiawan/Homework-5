@@ -2,8 +2,8 @@ import React from "react"
 import { Modal, Button } from "antd"
 import Cookies from "universal-cookie"
 
-import "../Status/logout.css"
 import NavbarComponent from "../../components/navbar/NavbarComponent"
+import "../Status/logout.css"
 
 const cookies = new Cookies()
 

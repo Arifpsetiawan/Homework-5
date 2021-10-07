@@ -1,17 +1,17 @@
-import React from "react"
 import { QueryClient, QueryClientProvider } from "react-query"
+import React from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import "./App.css"
-import { AuthorizedContextProvider } from "./AuthorizedContext"
-import AuthorizedRoute from "./AuthorizedRoute"
-import RestrictedWrapper from "./RestrictedWrapper"
 import TransaksiPage from "./pages/Transaksi/TransaksiPage"
-import RegisterAgen from "./pages/Register/RegisterAgen"
-import RegisterCustomer from "./pages/Register/RegisterCustomer"
 import Login from "./pages/login/Login"
 import Home from "./pages/Home/Home"
 import Logout from "./pages/Status/Logout"
+import RegisterAgen from "./pages/Register/RegisterAgen"
+import RegisterCustomer from "./pages/Register/RegisterCustomer"
+import AuthorizedRoute from "./AuthorizedRoute"
+import RestrictedWrapper from "./RestrictedWrapper"
+import { AuthorizedContextProvider } from "./AuthorizedContext"
 
 // Create a client
 const queryClient = new QueryClient({

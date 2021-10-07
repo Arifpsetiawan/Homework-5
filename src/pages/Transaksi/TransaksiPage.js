@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from "react"
-import { useHistory } from "react-router-dom"
 import {
   Row,
   Col,
@@ -13,6 +12,7 @@ import {
   Typography,
   Space,
 } from "antd"
+import { useHistory } from "react-router-dom"
 
 import DataAgent from "./DataAgent"
 import DataAlamat from "./DataAlamat"
