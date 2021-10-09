@@ -41,7 +41,7 @@ const RegisterAgen = () => {
 
   const handleRegisterAgenBtn = useCallback(() => {
     history.push("/")
-  }, [])
+  }, [history])
 
   return (
     <div className="outer-register">

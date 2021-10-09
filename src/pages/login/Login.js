@@ -1,6 +1,11 @@
 import React, { useState, useCallback } from "react"
-import { Form, Input, Button, Select, Col } from "antd"
-import { UserOutlined, LockOutlined } from "@ant-design/icons"
+import { Modal, Form, Input, Button, Select, Col } from "antd"
+import {
+  UserOutlined,
+  LockOutlined,
+  EyeTwoTone,
+  EyeInvisibleOutlined,
+} from "@ant-design/icons"
 import { useHistory } from "react-router-dom"
 
 import "./login.css"
@@ -17,8 +22,8 @@ const Login = () => {
   const [data, setData] = useState({})
   const [selectedUserLevel, setSelectedUserLevel] = useState("customer")
   const { setAuthorizedValue } = useAuthorizedContext()
-  const [visible, setVisible] = React.useState(false)
-  const [confirmLoading, setConfirmLoading] = React.useState(false)
+  const [visible, setVisible] = useState(false)
+  const [confirmLoading, setConfirmLoading] = useState(false)
 
   const handleSuccessLogin = useCallback(() => {
     setAuthorizedValue(true, selectedUserLevel)
@@ -93,11 +98,11 @@ const Login = () => {
 
   const handleRegisterAgen = useCallback(() => {
     history.push("/RegisterAgen")
-  }, [])
+  }, [history])
 
   const handleRegisterCustomer = useCallback(() => {
     history.push("/RegisterCustomer")
-  }, [])
+  }, [history])
 
   return (
     <div className="outer-login">

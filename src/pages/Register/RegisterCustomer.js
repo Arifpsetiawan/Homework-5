@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react"
+import React, { useCallback } from "react"
 import { Form, Input, Button, Col, Typography } from "antd"
 import { useHistory } from "react-router-dom"
 
@@ -11,7 +11,7 @@ const RegisterCustomer = () => {
 
   const handleRegisterCustomerBtn = useCallback(() => {
     history.push("/")
-  }, [])
+  }, [history])
 
   return (
     <div className="outer-login">
