@@ -14,9 +14,10 @@ import {
 } from "antd"
 import { useHistory } from "react-router-dom"
 
-import DataAgent from "./DataAgent"
+// import DataAgent from "./DataAgent"
 import DataAlamat from "./DataAlamat"
 import JenisTransaksi from "./DataJenisTransaksi"
+import useGetAgent from "../../Query/useGetAgent"
 import useCreateTransaction from "../../Mutations/useCreateTransaction"
 import NavbarComponent from "../../components/navbar/NavbarComponent"
 import "./TransaksiPage.css"
@@ -27,7 +28,7 @@ const { Text } = Typography
 const TransaksiPage = () => {
   const [selectedProvinsi, setSelectedProvinsi] = useState(null)
   const [selectedKabupaten, setSelectedKabupaten] = useState(null)
-  const [selectedKecamatan, setSelectedKecamatan] = useState(null)
+  const [/*selectedKecamatan,*/ setSelectedKecamatan] = useState(null)
   const [showTableAgen, setShowTableAgen] = useState(false)
   const history = useHistory()
   const [formState, setFormState] = useState({
@@ -48,6 +49,9 @@ const TransaksiPage = () => {
       history.replace("/home")
     }
   )
+
+  const { dataAgent, /*isErrorAgent,*/ isLoadingAgent } = useGetAgent()
+  console.log("data >> ", isLoadingAgent, dataAgent)
 
   const currencyParser = (val) => {
     try {
@@ -318,7 +322,7 @@ const TransaksiPage = () => {
                 <Text style={{ color: "red" }}> Gagal memilih Agen</Text>
                 <Table
                   columns={ColumnsAgen}
-                  dataSource={DataAgent}
+                  dataSource={dataAgent}
                   pagination={false}
                 />
               </Space>
@@ -326,7 +330,7 @@ const TransaksiPage = () => {
               showTableAgen && (
                 <Table
                   columns={ColumnsAgen}
-                  dataSource={DataAgent}
+                  dataSource={dataAgent}
                   pagination={false}
                 />
               )

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react"
+import React, { useState, useMemo } from "react"
 import { Row, Form, Input, Button, Select, Col, Typography } from "antd"
 import { useHistory } from "react-router-dom"
 
@@ -13,7 +13,7 @@ const RegisterAgen = () => {
   const history = useHistory()
   const [selectedProvinsi, setSelectedProvinsi] = useState(null)
   const [selectedKabupaten, setSelectedKabupaten] = useState(null)
-  const [selectedKecamatan, setSelectedKecamatan] = useState(null)
+  const [/*selectedKecamatan,*/ setSelectedKecamatan] = useState(null)
   const [agentState, setAgentState] = useState({
     username: "",
     password: "",
@@ -23,7 +23,7 @@ const RegisterAgen = () => {
     address: "",
   })
 
-  const { mutate, isLoadingAgent, isErrorAgent } = useCreateAgent(
+  const { mutate /*, isLoadingAgent, isErrorAgent*/ } = useCreateAgent(
     agentState,
     (result) => {
       console.log("success mutation >> ", result)

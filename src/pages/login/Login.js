@@ -23,7 +23,7 @@ const Login = () => {
   const [selectedUserLevel, setSelectedUserLevel] = useState("customer")
   const { setAuthorizedValue } = useAuthorizedContext()
   const [visible, setVisible] = useState(false)
-  const [confirmLoading, setConfirmLoading] = useState(false)
+  const [/*confirmLoading,*/ setConfirmLoading] = useState(false)
 
   const handleSuccessLogin = useCallback(() => {
     setAuthorizedValue(true, selectedUserLevel)
